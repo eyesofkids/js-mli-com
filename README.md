@@ -1,5 +1,11 @@
 # js-mli-com
 
+## 初始化專案
+
+```sh
+npm init -y
+```
+
 ## ESLint
 
 安裝 ESLint:

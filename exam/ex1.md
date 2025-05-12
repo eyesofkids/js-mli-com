@@ -2,15 +2,15 @@
 
 製作一個網頁上可以點按後累加數字的功能，每按一次加1
 
-## 2. 計數器2
+## 2. 計數器2(作業)
 
 製作一個網頁上呈現數字的文字、兩個按鈕的操作介面，一個按鈕可以加1數字，另一個是減1數字
 
 ## 3. 美金轉新台幣輸入框：
 
-實作一個線上的美金轉新台幣的應用程式，有一個文字輸入框，兩個按鈕「台幣轉為美金」與「美金轉台幣」，按不同的按鈕會呈現出不同的轉換結果。(1 USD 美金 = 30.44 TWD 新台幣)
+實作一個線上的美金轉新台幣的應用程式，有一個文字輸入框，兩個按鈕「台幣轉為美金」與「美金轉台幣」，按不同的按鈕會呈現出不同的轉換結果。(1 USD 美金 = 30.31 TWD 新台幣)
 
-## 4. BMI線上計算應用
+## 4. BMI(身體質量指數)線上計算應用
 
 BMI = 體重(公斤) / 身高<sup>2</sup>(公尺平方)
 
@@ -23,8 +23,23 @@ BMI（Body Mass Index）身體質量指數，是體重（公斤2）和身高平�
 
 除了計算 BMI 指數，更建議你透過 BMR 基礎代謝率計算器，計算出你每日應攝取熱量（以大卡計算，Calorie，kcal），搭配 BMI 指數，幫助你達到理想的健康體重。
 
-線上參考範例：https://helloyishi.com.tw/health-tools/bmi-calculator/
-
 提示：
 
-1. 身高的平方公尺要使用(假設身高輸入為公分，變數名稱為`height`)：`Math.pow(height/100, 2)`
+1. 身高的平方公尺要使用(假設身高輸入為公分(cm)，變數名稱為`height`)：`Math.pow(height/100, 2)`
+2. 線上參考範例：https://depart.femh.org.tw/dietary/3OPD/BMI.htm
+
+## 5. 體脂率: 由BMI推斷BFP(體脂率)(作業)
+
+設計一個進階可以由BMI，加入`年齡`輸入框與選擇`男性`或`女性`，來計算體脂率(BFP)的線上應用程式:
+
+Body fat percentage (BFP) 公式 成年男性(adult males):
+
+> BFP = 1.20 × BMI + 0.23 × Age - 16.2
+
+Body fat percentage (BFP)公式 成年女性(females):
+
+> BFP = 1.20 × BMI + 0.23 × Age - 5.4
+
+提示：
+1. 參考 BMI 計算公式，計算 BFP
+2. 參考: [Athletes](https://www.calculator.net/body-fat-calculator.html)
