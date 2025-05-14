@@ -8,30 +8,26 @@ const month = 5
 // #region 準備一個7x6=42個成員的資料陣列
 // 1. 獲得這個月份的第1天是星期幾(索引值0~4)
 const firstDay = new Date(`${year}/${month}/1`).getDay()
-// 產生一個具有firstDay數量的空白字串的陣列
-const frontData = []
-for (let i = 0; i < firstDay; i++) {
-  frontData.push('')
-}
 
 // 2. 獲得這個月有幾天
 // 公式: 要得到某年的某個月有幾天，可以用`new Date(y, m, 0).getDate()`，例如 2009 年的 9 月就是使用`new Date(2009, 9, 0).getDate()`
 const days = new Date(year, month, 0).getDate()
-// 產生一個從1~days的有序數字陣列
-const contentData = []
-for (let i = 0; i < days; i++) {
-  contentData.push(i + 1)
-}
 
-// 3. 產生最後42-firstDay-days的空白字串的陣列
-const endData = []
-for (let i = 0; i < 42 - firstDay - days; i++) {
-  endData.push('')
-}
-// 4. 組合為一個有42成員的陣列
-const allData = [...frontData, ...contentData, ...endData]
+// 3. 組合為一個有42成員的陣列
+const allData = [
+  ...Array(firstDay).fill(''), //產生具有firstDay數量的空白字串的陣列
+  ...Array(days)
+    .fill(1)
+    .map((v, i) => i + 1), //產生一個從1~days的有序數字陣列
+  ...Array(42 - firstDay - days).fill(''), // 產生最後42-firstDay-days的空白字串的陣列
+].map((v)=> `<td>${v}</td>`)
+
 // 除錯
 console.log('allData', allData)
+// 進行分塊(使用lodash)
+const allDataChunks = _.chunk(allData,7)
+console.log('allDataChunks', allDataChunks)
+
 // #endregion
 
 // 以下為使用表格呈現在網頁上
@@ -50,18 +46,13 @@ display += `<thead>
 </thead>`
 // 表格內容
 display += '<tbody>'
-display += '<tr>'
 
-// 使用for迴圈(每7個分行用</tr><tr>)
-for (let i = 0; i < allData.length; i++) {
-  display += `<td>${allData[i]}</td>`
-  // 每7個要換列
-  if ((i + 1) % 7 === 0) {
-    display += '</tr><tr>'
-  }
-}
+display += allDataChunks.map((v)=>{
+  return `<tr>${v.join('')}</tr>`
+}).join('')
 
-display += '</tr>'
+
+// display += '</tr>'
 display += '<tbody>'
 display += '</table>'
 // 呈現在頁面
