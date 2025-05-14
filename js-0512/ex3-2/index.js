@@ -20,12 +20,13 @@ const allData = [
     .fill(1)
     .map((v, i) => i + 1), //產生一個從1~days的有序數字陣列
   ...Array(42 - firstDay - days).fill(''), // 產生最後42-firstDay-days的空白字串的陣列
-].map((v)=> `<td>${v}</td>`)
+].map((v)=> `<td>${v}</td>`) // 將所有資料加上td前後標記
 
 // 除錯
 console.log('allData', allData)
-// 進行分塊(使用lodash)
+// 進行分塊(使用lodash)，每7個一列準備組合用
 const allDataChunks = _.chunk(allData,7)
+// 除錯
 console.log('allDataChunks', allDataChunks)
 
 // #endregion
@@ -47,6 +48,7 @@ display += `<thead>
 // 表格內容
 display += '<tbody>'
 
+// 每列加上 tr 前後標記，並組合為字串
 display += allDataChunks.map((v)=>{
   return `<tr>${v.join('')}</tr>`
 }).join('')
