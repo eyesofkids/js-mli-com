@@ -10,9 +10,16 @@ const result = document.querySelector('#result')
 // 匯率公式: 1 USD 美金 = 30.42 TWD 新台幣
 const exchangeRate = 30.42
 
-// 從輸入的金額(字串) => 幾個小數點(digit)的字串 => 加入千位符的金額字串
-// type = 'multiply' | 'division'
-const converter = (value='', rate=30, digit = 0, type = 'multiply') => {
+/**
+ * 根據給定的匯率、四捨五入精度和操作類型轉換數值。
+ *
+ * @param {string|number} [value=''] - 要轉換的輸入值。默認為空字符串。
+ * @param {number} [rate=30] - 要應用的匯率。默認為30。
+ * @param {number} [digit=0] - 要四捨五入的小數位數。默認為0。
+ * @param {string} [type='multiply'] - 操作類型，可以是 'multiply' 或 'divide'。默認為 'multiply'。
+ * @returns {string} - 轉換後的值，帶有千位分隔符的字符串。
+ */
+const converter = (value = '', rate = 30, digit = 0, type = 'multiply') => {
   // 先乘或除匯率
   const a1 = type === 'multiply' ? Number(value) * rate : Number(value) / rate
   // 調整小數點位數`(Number).toFixed(0)` 從數字回傳一個小數點後0位的"字串"
@@ -27,10 +34,11 @@ usd2twd.addEventListener('click', function () {
   // 從html中得到的值對js來說一定是字串值
   result.innerHTML =
     '轉換金額(新台幣): NT$' +
-    converter(money.value,exchangeRate, 0, 'multiply')
+    converter(money.value, exchangeRate, 0, 'multiply')
 })
 
 // 新台幣 -> 美金
 twd2usd.addEventListener('click', function () {
-  result.innerHTML = '轉換金額(美金): $' + converter(money.value, exchangeRate, 2, 'division')
+  result.innerHTML =
+    '轉換金額(美金): $' + converter(money.value, exchangeRate, 2, 'division')
 })
