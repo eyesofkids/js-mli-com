@@ -44,6 +44,12 @@ const displayTable = (products) => {
   display += '</tbody></table>'
   // 呈現於網頁上
   result.innerHTML = display
+  // 儲存到localStorage
+  // JSON.stringify: JS資料 ==> JSON字串JS資料
+  // JSON.parse: JSON字串 ==> JS資料
+  localStorage.setItem('cart', JSON.stringify(products))
+
+  // 以下程式碼需要在元素已經呈現在畫面上才能使用(獲取元件、加入事件監聽…)
   // 獲得所有DOM元素實體物件(class=dd)
   const increaseButtons = document.getElementsByClassName('increase')
   const decreaseButtons = document.getElementsByClassName('decrease')
@@ -87,8 +93,3 @@ const displayTable = (products) => {
 
 // 第一次呈現myProducts資料
 displayTable(myProducts)
-
-// 儲存到localStorage
-// JSON.stringify: JS資料 ==> JSON字串JS資料
-// JSON.parse: JSON字串 ==> JS資料
-localStorage.setItem('cart', JSON.stringify(products))
