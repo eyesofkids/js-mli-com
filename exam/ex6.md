@@ -46,3 +46,11 @@
 
 - 以年紀排序，由小至大: `?_sort=age&_order=asc`
 - 以年紀排序，由大至小: `?_sort=age&_order=desc`
+
+---
+
+## json-server
+
+```shell
+npx json-server db.json
+```
