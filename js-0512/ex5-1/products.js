@@ -56,5 +56,13 @@ export const brands = [
   { id: 3, name: '三星' },
 ]
 
+// 預設導出(default)只能是函式/類別 function/class，一個檔案只能有一個預設導出
+export default function sum(x, y) {
+  return x + y
+}
+
+// 二選一: 相當於直接寫export在函式/類別前面 
+// export default sum
+
 // 二選一: 相當於直接寫export在 const/let/var/function/class前面
 // export { products,brands }
