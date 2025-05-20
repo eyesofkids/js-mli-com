@@ -5,6 +5,14 @@ const result = document.querySelector('#result')
 const year = 2025
 const month = 5
 
+// 獲得今天的年月日
+const nowY = new Date().getFullYear()
+// getMonth得到的是0~11(索引值)
+const nowM = new Date().getMonth() + 1
+const nowD = new Date().getDate()
+
+console.log(nowY, nowM, nowD)
+
 // #region 準備一個7x6=42個成員的資料陣列
 // 1. 獲得這個月份的第1天是星期幾(索引值0~4)
 const firstDay = new Date(`${year}/${month}/1`).getDay()
@@ -20,12 +28,12 @@ const allData = [
     .fill(1)
     .map((v, i) => i + 1), //產生一個從1~days的有序數字陣列
   ...Array(42 - firstDay - days).fill(''), // 產生最後42-firstDay-days的空白字串的陣列
-].map((v)=> `<td>${v}</td>`) // 將所有資料加上td前後標記
+].map((v) => `<td class="${v === nowD ? 'today' : ''}">${v}</td>`) // 將所有資料加上td前後標記，判斷為今天套入css類別today
 
 // 除錯
 console.log('allData', allData)
 // 進行分塊(使用lodash)，每7個一列準備組合用
-const allDataChunks = _.chunk(allData,7)
+const allDataChunks = _.chunk(allData, 7)
 // 除錯
 console.log('allDataChunks', allDataChunks)
 
@@ -49,10 +57,11 @@ display += `<thead>
 display += '<tbody>'
 
 // 每列加上 tr 前後標記，並組合為字串
-display += allDataChunks.map((v)=>{
-  return `<tr>${v.join('')}</tr>`
-}).join('')
-
+display += allDataChunks
+  .map((v) => {
+    return `<tr>${v.join('')}</tr>`
+  })
+  .join('')
 
 // display += '</tr>'
 display += '<tbody>'
