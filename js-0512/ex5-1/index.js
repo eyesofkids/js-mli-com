@@ -4,7 +4,7 @@ import { products } from './products.js'
 // 以下獲取DOM各元素物件實體
 const result = document.querySelector('#result')
 
-// 呈現表格
+// 呈現表格(串聯html字串)
 let display = `<table border="1">
 <thead>
 <tr>
@@ -16,7 +16,7 @@ let display = `<table border="1">
 <tbody>`
 
 display += products
-  .map((v, i) => {
+  .map((v) => {
     return `<tr>
             <td>${v.id}</td>
             <td>${v.name}</td>
@@ -26,6 +26,10 @@ display += products
   .join('')
 
 display += '</tbody></table>'
-
+// 呈現於網頁上
 result.innerHTML = display
 
+// 儲存到localStorage
+// JSON.stringify: JS資料 ==> JSON字串JS資料
+// JSON.parse: JSON字串 ==> JS資料
+localStorage.setItem('cart', JSON.stringify(products))
