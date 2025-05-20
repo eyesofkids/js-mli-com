@@ -7,7 +7,7 @@ const month = 5
 
 // 獲得今天的年月日
 const nowY = new Date().getFullYear()
-// getMonth得到的是0~11(索引值)
+// getMonth得到的是0~11(索引值)，要得到真正的月份需要+1
 const nowM = new Date().getMonth() + 1
 const nowD = new Date().getDate()
 
@@ -28,7 +28,7 @@ const allData = [
     .fill(1)
     .map((v, i) => i + 1), //產生一個從1~days的有序數字陣列
   ...Array(42 - firstDay - days).fill(''), // 產生最後42-firstDay-days的空白字串的陣列
-].map((v) => `<td class="${v === nowD ? 'today' : ''}">${v}</td>`) // 將所有資料加上td前後標記，判斷為今天套入css類別today
+].map((v) => `<td class="dd ${v === nowD ? 'today' : ''}">${v}</td>`) // 將所有資料加上td前後標記，判斷為今天套入css類別today
 
 // 除錯
 console.log('allData', allData)
@@ -68,3 +68,18 @@ display += '<tbody>'
 display += '</table>'
 // 呈現在頁面
 result.innerHTML = display
+
+// 獲得所有DOM元素實體物件(class=dd)
+const elements = document.getElementsByClassName('dd')
+//  也可以使用querySelectorAll，但物件類別有所不同
+// const elements2 = document.querySelectorAll('.dd')
+
+console.log(elements)
+
+for (let i = 0; i < elements.length; i++) {
+   if (elements[i].innerHTML) {
+    elements[i].addEventListener('click', function () {
+      alert(`${year}/${month}/${elements[i].innerHTML}`)
+    })
+  }
+}
