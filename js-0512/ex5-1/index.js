@@ -22,6 +22,7 @@ const displayTable = (products) => {
 <th>名稱</th>
 <th>價格</th>
 <th>數量</th>
+<th>小計</th>
 </tr>
 </thead>
 <tbody>`
@@ -31,17 +32,22 @@ const displayTable = (products) => {
       return `<tr>
             <td>${product.id}</td>
             <td>${product.name}</td>
-            <td>${product.price}</td>
+            <td>NT$${product.price.toLocaleString()}</td>
             <td>
             <button class="decrease" data-pid="${product.id}">-</button>
             ${product.count}
             <button class="increase" data-pid="${product.id}">+</button>
             </td>
+            <td>NT$${(product.price * product.count).toLocaleString()}</td>
          </tr>`
     })
     .join('')
 
   display += '</tbody></table>'
+  // 加上總計
+  display += `<hr>
+  <div>總數量: ${products.reduce((acc, product) => acc + product.count, 0)}</div>
+  <div>總金額: NT$${(products.reduce((acc, product) => acc + product.price * product.count, 0)).toLocaleString()}</div>`
   // 呈現於網頁上
   result.innerHTML = display
   // 儲存到localStorage
