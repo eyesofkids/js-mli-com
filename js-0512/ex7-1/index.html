@@ -21,6 +21,19 @@
         <button>送出</button>
     </form>
     <hr>
+    <h2>更新表單</h2>
+    <!-- 表單操作典型作法是利用form的submit(提交)事件，而不是button的click事件 -->
+    <form id="updateForm" name="updateForm"
+    >
+        編號: <input type="text" name="updateId" id="updateId" required>
+        <br>
+        姓名: <input type="text" name="updateName" id="updateName" required>
+        <br>
+        年齡: <select name="updateAge" id="updateAge" required></select>
+        <br>
+        <button>送出</button>
+    </form>
+    <hr>
     <div id="result"></div>
     <script src="index.js"></script>
 </body>
