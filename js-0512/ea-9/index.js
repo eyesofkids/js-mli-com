@@ -1,13 +1,13 @@
 // 呈現資料用函式
 const display = (users) => {
-  const htmlString = `<ul>
-  ${users
+  const usersNode= users
     .map((user) => {
       return `<li>${user.id}/${user.name}/${user.age}</li>`
     })
-    .join('')}
-  </ul>`
-  // 呈現在頁面上id=result的DOM節點位置
+    .join('')
+
+  const htmlString = `<ul>${usersNode}</ul>`
+  // 呈現在頁面上id=result的DOM節點
   document.querySelector('#result').innerHTML = htmlString
 }
 
