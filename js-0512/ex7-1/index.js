@@ -82,9 +82,9 @@ document.querySelector('#addForm').addEventListener('submit', async function (ev
     age: fd.get('age'),
   }
   // 往伺服器傳送
-  createUser(user)
+  await createUser(user)
   // 刷新伺服器資料
-  getUsers()
+  await getUsers()
   // 清空表單
   event.target.reset()
 })
