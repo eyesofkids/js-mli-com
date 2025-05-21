@@ -4,6 +4,7 @@ const url = 'http://localhost:3000/users'
 // 用箭頭函式的語法
 // const getUsers= async () => {}
 // 用一般函式的語法
+// 獲取多筆的資料
 async function getUsers() {
   // 用try...catch作錯誤處理
   try {
@@ -23,7 +24,7 @@ async function getUsers() {
   }
 }
 
-// 獲取單一筆的資料
+// 獲取單一筆的資料(呈現結果在更新表單中)
 async function getUserById(uid) {
   // 用try...catch作錯誤處理
   try {
