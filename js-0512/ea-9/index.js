@@ -1,5 +1,21 @@
+// 呈現資料用函式
+const display = (users) => {
+  let htmlString = '<ul>'
+
+  htmlString += users
+    .map((v) => {
+      return `<li>${v.id}/${v.name}/${v.age}</li>`
+    })
+    .join('')
+
+  htmlString += '</ul>'
+
+  document.querySelector('#result').innerHTML = htmlString
+}
+
 const url =
   'https://my-json-server.typicode.com/eyesofkids/json-fake-data/users'
+
 
 // method: get 獲取資料(預設)
 fetch(url)
@@ -7,9 +23,14 @@ fetch(url)
     // 從回應(res)物件解析json資料為js資料格式
     return res.json()
   })
-  .then((data) => {
-    console.log(data)
+  .then((users) => {
+    console.log(users)
+    // 要在promise的then的callback裡面呼叫呈現的函式
+    display(users)
   })
   .catch((error) => {
+    // 錯誤處理用
     console.error(error)
   })
+
+
