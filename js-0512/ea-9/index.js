@@ -1,21 +1,18 @@
 // 呈現資料用函式
 const display = (users) => {
-  let htmlString = '<ul>'
-
-  htmlString += users
-    .map((v) => {
-      return `<li>${v.id}/${v.name}/${v.age}</li>`
+  const htmlString = `<ul>
+  ${users
+    .map((user) => {
+      return `<li>${user.id}/${user.name}/${user.age}</li>`
     })
-    .join('')
-
-  htmlString += '</ul>'
-
+    .join('')}
+  </ul>`
+  // 呈現在頁面上id=result的DOM節點位置
   document.querySelector('#result').innerHTML = htmlString
 }
 
 const url =
   'https://my-json-server.typicode.com/eyesofkids/json-fake-data/users'
-
 
 // method: get 獲取資料(預設)
 fetch(url)
@@ -32,5 +29,3 @@ fetch(url)
     // 錯誤處理用
     console.error(error)
   })
-
-
