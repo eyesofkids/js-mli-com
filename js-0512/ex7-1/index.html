@@ -7,6 +7,20 @@
 </head>
 <body>
     <h1>連絡人管理系統</h1>
+    <hr>
+    <h2>新增表單</h2>
+    <!-- 表單操作典型作法是利用form的submit(提交)事件，而不是button的click事件 -->
+    <form id="addForm" name="addForm"
+    >
+        編號: <input type="text" name="id" required>
+        <br>
+        姓名: <input type="text" name="name" required>
+        <br>
+        年齡: <select name="age" id="userAge" required></select>
+        <br>
+        <button>送出</button>
+    </form>
+    <hr>
     <div id="result"></div>
     <script src="index.js"></script>
 </body>
