@@ -5,10 +5,10 @@
 
 ## 基本操作
 
-- C(create, add/new) 新增項目
-- R(read, list/item view) 列出清單，讀取單筆資料
-- U(update, edit/toggle status) 修改，更動狀態
-- D(delete, remove) 刪除
+- C(create, add/new) 新增項目  (POST)
+- R(read, list/item view) 列出清單，讀取單筆資料 (GET)
+- U(update, edit/toggle status) 修改，更動狀態 (PUT/PATCH)
+- D(delete, remove) 刪除 (DELETE)
 
 ## 其它操作
 
