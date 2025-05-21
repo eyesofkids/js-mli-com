@@ -5,7 +5,43 @@
 
 ## 基本操作
 
-- C(create, add/new) 新增項目  (POST)
+### C(create, add/new) 新增項目
+
+Request(要求)
+
+url: `http://localhost:3000/users`
+method: POST
+headers:
+  Accept: 'application/json'
+  'Content-Type': 'application/json'
+body:
+
+```json
+{
+  "id": "107005",
+  "name": "陳語合",
+  "age": 20
+}
+```
+
+Response(回應):
+
+成功:
+
+```json
+{
+  "id": "107005",
+  "name": "陳語合",
+  "age": 20
+}
+```
+
+失敗:
+
+```json
+
+```
+
 - R(read, list/item view) 列出清單，讀取單筆資料 (GET)
 - U(update, edit/toggle status) 修改，更動狀態 (PUT/PATCH)
 - D(delete, remove) 刪除 (DELETE)
