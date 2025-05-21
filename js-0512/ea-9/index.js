@@ -18,15 +18,20 @@ const url =
 // const getUsers= async () => {}
 // 用一般函式的語法
 async function getUsers() {
-  // await關鍵字只能在async函式裡使用
-  // 等候promise實現or拒絕，回傳解析的值or理由
-  const res = await fetch(url)
-  // 等候res物件解析為js資料格式
-  const users = await res.json()
-  // 除錯
-  console.log(users)
-  // 呈現結果在頁面上
-  display(users)
+  // 用try...catch作錯誤處理
+  try {
+    // await關鍵字只能在async函式裡使用
+    // 等候promise實現or拒絕，回傳解析的值or理由
+    const res = await fetch(url)
+    // 等候res物件解析為js資料格式
+    const users = await res.json()
+    // 除錯
+    console.log(users)
+    // 呈現結果在頁面上
+    display(users)
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 // 呼叫async函式
