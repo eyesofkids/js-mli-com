@@ -14,9 +14,9 @@ const display = (users) => {
 const url =
   'https://my-json-server.typicode.com/eyesofkids/json-fake-data/users'
 
-// 用箭頭函式的寫法
-// const getUsers= async ()=>{
-// }
+// 用箭頭函式的語法
+// const getUsers= async () => {}
+// 用一般函式的語法
 async function getUsers() {
   // await關鍵字只能在async函式裡使用
   // 等候promise實現or拒絕，回傳解析的值or理由
@@ -29,7 +29,7 @@ async function getUsers() {
   display(users)
 }
 
-// 呼叫執行
+// 呼叫async函式
 getUsers()
 
 // method: get 獲取資料(預設)
